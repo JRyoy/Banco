@@ -3,36 +3,33 @@ namespace Varios;
 public class Cuenta
 {
     public int Cbu { get; set; } = 0;
-    public double Saldo { get; set; }
-    public double Suma { get; set; }
-    public double Resta { get; set; }
+    public double SaldoCuenta { get; set; }
+    public Cliente cliente{get; set;}
 
-
-    public Cuenta(int Cbu)
+    public Cuenta(int Cbu,Cliente cliente)
     {
         this.Cbu = ++Cbu;
+        this.cliente=cliente;
     }
-    public bool Acreditar(double Monto)
+        public void Acreditar(double Monto)
     {
-        if(Monto<=0)
-        {
-            return false;
-            throw new ArgumentException("El monto del depósito debe ser mayor que cero.");
-        }
-        else
-            return true;
-            this.Saldo = Saldo + Monto;
         
+        cliente.Saldo += Monto * 0.8;
+        SaldoCuenta += Monto * 0.2;
     }
-    public bool Debitar(double Monto)
+    public void Debitar(double Monto)
     {
-        if (Saldo < Monto)
+        if (validarDebito(Monto))
         {
-            return false;
-                throw new InvalidOperationException("Saldo insuficiente.");
+            throw new InvalidOperationException("Saldo insuficiente.");
         }
         else
-            return true;
-                this.Saldo = Saldo - Monto;
+        {
+            SaldoCuenta -= Monto * 0.8;
+            cliente.Saldo -= Monto * 0.2;
+        }
     }
+    public bool validarDebito(double monto) => SaldoCuenta - monto < 0;
+
+
 }
