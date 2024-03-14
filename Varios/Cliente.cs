@@ -22,7 +22,7 @@ public class Cliente
     }
     public void Debitar(double Monto)
     {
-        if (validarDebito(Monto))
+        if (NoAlcanzaDebito(Monto))
         {
             throw new InvalidOperationException("Saldo insuficiente.");
         }
@@ -32,6 +32,6 @@ public class Cliente
             cuenta.SaldoCuenta -= Monto * 0.2;
         }
     }
-    public bool validarDebito(double monto) => Saldo - monto < 0;
+    public bool NoAlcanzaDebito(double monto) => Saldo - monto < 0;
 
 }
