@@ -12,7 +12,7 @@ class Cliente{
     +Debitar(double Monto)
 
 }
-Cliente<--Cuenta
+
 class Cuenta{
     +Cbu:int
     +SaldoCuenta:double 
