@@ -14,13 +14,13 @@ public class Cliente
         this.cuenta=cuenta;
     }
 
-    public void Acreditar(double Monto)
+    internal void Acreditar(double Monto)
     {
         
         Saldo += Monto * 0.8;
         cuenta.SaldoCuenta += Monto * 0.2;
     }
-    public void Debitar(double Monto)
+    internal void Debitar(double Monto)
     {
         if (NoAlcanzaDebito(Monto))
         {

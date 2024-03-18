@@ -4,20 +4,20 @@ public class Cuenta
 {
     public int Cbu { get; set; } = 0;
     public double SaldoCuenta { get; set; }
-    public Cliente cliente{get; set;}
+    public Cliente cliente { get; set; }
 
-    public Cuenta(int Cbu,Cliente cliente)
+    public Cuenta(int Cbu, Cliente cliente)
     {
         this.Cbu = ++Cbu;
-        this.cliente=cliente;
+        this.cliente = cliente;
     }
-        public void Acreditar(double Monto)
+    internal void Acreditar(double Monto)
     {
-        
+
         cliente.Saldo += Monto * 0.8;
         SaldoCuenta += Monto * 0.2;
     }
-    public void Debitar(double Monto)
+    internal void Debitar(double Monto)
     {
         if (validarDebito(Monto))
         {
