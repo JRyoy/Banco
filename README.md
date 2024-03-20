@@ -20,29 +20,29 @@ class Cliente{
     +Debitar(double Monto)
 
 }
-Cliente --> IEstrategia
+Cliente --> Estado
 
-class  IEstrategia{
+class  Estado{
     <Interface>
 
     +Acreditar(Cliente cliente,double Monto)
     +Debitar(Cliente cliente,double Monto)
 }
-Cauto..|>IEstrategia
-Emergencia..|>IEstrategia
-ahorrista..|>IEstrategia
+Cauto..|>Estado
+Emergencia..|>Estado
+ahorrista..|>Estado
 class Cauto{
-    +Cliente:cliente
-    +Monto:double
+    +Acreditar(Cliente cliente,double Monto)
+    +Debitar(Cliente cliente,double Monto)
 
 }
 class Emergencia{
-    +Cliente:cliente
-    +Monto:double
+    +Acreditar(Cliente cliente,double Monto)
+    +Debitar(Cliente cliente,double Monto)
 }
 class ahorrista{
-    +Cliente:cliente
-    +Monto:double
+    +Acreditar(Cliente cliente,double Monto)
+    +Debitar(Cliente cliente,double Monto)
 
 }
 
