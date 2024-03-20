@@ -20,17 +20,17 @@ class Cliente{
     +Debitar(double Monto)
 
 }
-Cliente --> Estado
+Cliente --> IEstado
 
-class  Estado{
+class  IEstado{
     <Interface>
 
     +Acreditar(Cliente cliente,double Monto)
     +Debitar(Cliente cliente,double Monto)
 }
-Cauto..|>Estado
-Emergencia..|>Estado
-ahorrista..|>Estado
+Cauto..|>IEstado
+Emergencia..|>IEstado
+ahorrista..|>IEstado
 class Cauto{
     +Acreditar(Cliente cliente,double Monto)
     +Debitar(Cliente cliente,double Monto)
