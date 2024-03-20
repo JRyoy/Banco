@@ -24,7 +24,7 @@ Cliente --> IEstado
 
 class  IEstado{
     <Interface>
-
+    +ValidarUso(Cliente)bool
     +Acreditar(Cliente cliente,double Monto)
     +Debitar(Cliente cliente,double Monto)
 }
