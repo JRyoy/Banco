@@ -8,23 +8,6 @@ internal interface IEstado
 
     void Debitar(Cliente cliente, double Monto);
 
-    internal void ValidarUso(Cliente cliente)
-    {
-
-        if (cliente.Saldo < 10000)
-        {
-            
-        }
-        if (cliente.Saldo >10000 && cliente.Saldo<50000)
-        {
-            
-        }
-        if (cliente.Saldo>50000)
-        {
-            
-        }
-
-
-    }
+    bool ValidarUso(Cliente cliente);
 
 }

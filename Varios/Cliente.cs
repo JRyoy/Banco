@@ -14,7 +14,10 @@ public class Cliente
         this.Apellido = Apellido;
         this.cuenta=cuenta;
     }
-
+    public void EstadoEmergencia()
+    {
+        
+    }
     internal void Acreditar(double Monto)
     {
         

@@ -2,6 +2,7 @@ namespace Varios.Estados;
 
 internal class Ahorrista : IEstado
 {
+    public bool ValidarUso(Cliente cliente)=>cliente.Saldo>50000;
     public void Acreditar(Cliente cliente, double Monto)
     {
         cliente.Saldo += Monto*0.5;
