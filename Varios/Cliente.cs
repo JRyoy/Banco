@@ -6,6 +6,7 @@ public class Cliente
     public string Apellido { get; set; }
     public double Saldo { get; set; }
     public Cuenta cuenta;
+    internal IEstado iestado{get; set;}
 
     public Cliente(string Nombre, string Apellido, Cuenta cuenta)
     {

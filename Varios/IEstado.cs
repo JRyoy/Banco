@@ -17,12 +17,12 @@ internal interface IEstado
         }
         if (cliente.Saldo >10000 && cliente.Saldo<50000)
         {
-
+            
         }
         if (cliente.Saldo>50000)
-    {
-        
-    }
+        {
+            
+        }
 
 
     }
