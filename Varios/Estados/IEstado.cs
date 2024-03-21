@@ -1,6 +1,6 @@
-using Varios.Estados;
+using Varios;
 
-namespace Varios;
+namespace VariosEstados;
 
 internal interface IEstado
 {

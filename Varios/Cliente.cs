@@ -1,3 +1,5 @@
+using VariosEstados;
+
 namespace Varios;
 
 public class Cliente
@@ -5,25 +7,28 @@ public class Cliente
     public string Nombre { get; set; }
     public string Apellido { get; set; }
     public double Saldo { get; set; }
-    public Cuenta cuenta;
-    internal IEstado iestado{get; set;}
+    public Cuenta Cuenta;
+    internal IEstado Estado { get; set; }
 
     public Cliente(string Nombre, string Apellido, Cuenta cuenta)
     {
         this.Nombre = Nombre;
         this.Apellido = Apellido;
-        this.cuenta=cuenta;
+        this.Cuenta = cuenta;
     }
-    public void EstadoEmergencia()
+
+    public void Acreditar(double Monto)
     {
-        
+        Estado.Acreditar(this, Monto);
+        Estados.AsignarEstado(this);
     }
-    internal void Acreditar(double Monto)
-    {
-        
-        Saldo += Monto * 0.8;
-        cuenta.SaldoCuenta += Monto * 0.2;
-    }
+    
+    internal void AcreditarEfectivo(double monto)
+        => Saldo += monto;
+    
+    internal void DebitarEfectivo(double monto)
+        => Saldo -= monto;
+    
     internal void Debitar(double Monto)
     {
         if (NoAlcanzaDebito(Monto))
@@ -33,9 +38,10 @@ public class Cliente
         else
         {
             Saldo -= Monto * 0.8;
-            cuenta.SaldoCuenta -= Monto * 0.2;
+            Cuenta.SaldoCuenta -= Monto * 0.2;
         }
     }
     public bool NoAlcanzaDebito(double monto) => Saldo - monto < 0;
+
 
 }

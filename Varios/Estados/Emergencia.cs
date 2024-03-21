@@ -1,22 +1,23 @@
-namespace Varios.Estados;
+using Varios;
+
+namespace VariosEstados;
 
 internal class Emergencia : IEstado
 {
     public bool ValidarUso(Cliente cliente) => cliente.Saldo < 10000;
-    public void Acreditar(Cliente cliente, double Monto)
+    public void Acreditar(Cliente cliente, double monto)
     {
-        cliente.Saldo += Monto*0.8;
-        cliente.cuenta.SaldoCuenta += Monto;
+        cliente.AcreditarEfectivo(monto);
     }
 
-    public void Debitar(Cliente cliente, double Monto)
+    public void Debitar(Cliente cliente, double monto)
     {
-        if(cliente.cuenta.SaldoCuenta > Monto)
+        if(cliente.Cuenta.SaldoCuenta > monto)
         {
-            cliente.cuenta.SaldoCuenta -= Monto;
+            cliente.Cuenta.Debitar(monto);
         }
         else
-            cliente.Saldo-=Monto;
+            cliente.DebitarEfectivo(monto);
     }
         
         

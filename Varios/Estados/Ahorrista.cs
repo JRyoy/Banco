@@ -1,19 +1,22 @@
-namespace Varios.Estados;
+using Varios;
+
+namespace VariosEstados;
 
 internal class Ahorrista : IEstado
 {
-    public bool ValidarUso(Cliente cliente)=>cliente.Saldo>50000;
-    public void Acreditar(Cliente cliente, double Monto)
+    public bool ValidarUso(Cliente cliente) => cliente.Saldo > 50000;
+    public void Acreditar(Cliente cliente, double monto)
     {
-        cliente.Saldo += Monto*0.5;
-        cliente.cuenta.SaldoCuenta += Monto * 0.5;
+        cliente.Saldo += monto * 0.5;
+        cliente.Cuenta.Acreditar(monto *0.5);
     }
 
-    public void Debitar(Cliente cliente, double Monto)
+    public void Debitar(Cliente cliente, double monto)
     {
-        if(cliente.Saldo > Monto){cliente.Saldo-=Monto;}
+        if (cliente.Saldo > monto)
+            cliente.DebitarEfectivo(monto);
         else
-            cliente.cuenta.SaldoCuenta-=Monto;
+            cliente.Cuenta.Debitar(monto);
     }
 
 }
