@@ -39,6 +39,7 @@ public class Cliente
         {
             Saldo -= Monto * 0.8;
             Cuenta.SaldoCuenta -= Monto * 0.2;
+            Estados.AsignarEstado(this);
         }
     }
     public bool NoAlcanzaDebito(double monto) => Saldo - monto < 0;
