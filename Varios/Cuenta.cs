@@ -11,22 +11,22 @@ public class Cuenta
         this.Cbu = ++Cbu;
         this.cliente = cliente;
     }
-    internal void Acreditar(double Monto)
+    internal void Acreditar(double monto)
     {
 
-        cliente.Saldo += Monto * 0.8;
-        SaldoCuenta += Monto * 0.2;
+        cliente.Saldo += monto * 0.8;
+        SaldoCuenta += monto * 0.2;
     }
-    internal void Debitar(double Monto)
+    internal void Debitar(double monto)
     {
-        if (validarDebito(Monto))
+        if (validarDebito(monto))
         {
             throw new InvalidOperationException("Saldo insuficiente.");
         }
         else
         {
-            SaldoCuenta -= Monto * 0.8;
-            cliente.Saldo -= Monto * 0.2;
+            SaldoCuenta -= monto * 0.8;
+            cliente.Saldo -= monto * 0.2;
         }
     }
     public bool validarDebito(double monto) => SaldoCuenta - monto < 0;
