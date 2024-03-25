@@ -6,9 +6,10 @@ public class Cuenta
     public double SaldoCuenta { get; set; }
     public Cliente cliente { get; set; }
 
-    public Cuenta(int Cbu, Cliente cliente)
+    public Cuenta(int Cbu,double SaldoCuenta, Cliente cliente)
     {
         this.Cbu = ++Cbu;
+        this.SaldoCuenta=SaldoCuenta;
         this.cliente = cliente;
     }
     internal void Acreditar(double monto)
