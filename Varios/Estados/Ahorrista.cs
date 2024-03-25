@@ -7,7 +7,7 @@ internal class Ahorrista : IEstado
     public bool ValidarUso(Cliente cliente) => cliente.Saldo > 50000;
     public void Acreditar(Cliente cliente, double monto)
     {
-        cliente.Saldo += monto * 0.5;
+        cliente.AcreditarEfectivo(monto*0.5);
         cliente.Cuenta.Acreditar(monto *0.5);
     }
 
