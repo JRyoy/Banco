@@ -8,13 +8,13 @@ public class Cliente
     public string Apellido { get; set; }
     public double Saldo { get; set; }
     public Cuenta Cuenta;
-    internal IEstado Estado { get; set; }
-
+    internal IEstado Estado { get; set; } = null!;
     public Cliente(string Nombre, string Apellido, Cuenta cuenta)
     {
         this.Nombre = Nombre;
         this.Apellido = Apellido;
         this.Cuenta = cuenta;
+        Estados.AsignarEstado(this);
     }
 
     public void Acreditar(double Monto)
@@ -22,25 +22,23 @@ public class Cliente
         Estado.Acreditar(this, Monto);
         Estados.AsignarEstado(this);
     }
-    
+
+
     internal void AcreditarEfectivo(double monto)
         => Saldo += monto;
-    
+
+
     internal void DebitarEfectivo(double monto)
         => Saldo -= monto;
-    
-    internal void Debitar(double Monto)
+
+    internal void Debitar(double monto)
     {
-        if (NoAlcanzaDebito(Monto))
-        {
+        if (NoAlcanzaDebito(monto))
             throw new InvalidOperationException("Saldo insuficiente.");
-        }
-        else
-        {
-            Saldo -= Monto * 0.8;
-            Cuenta.SaldoCuenta -= Monto * 0.2;
-            Estados.AsignarEstado(this);
-        }
+
+        Estado.Debitar(this, monto);
+        Estados.AsignarEstado(this);
+
     }
     public bool NoAlcanzaDebito(double monto) => Saldo - monto < 0;
 
