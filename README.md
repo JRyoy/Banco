@@ -32,15 +32,18 @@ Cauto..|>IEstado
 Emergencia..|>IEstado
 ahorrista..|>IEstado
 class Cauto{
+    +ValidarUso(Cliente)bool
     +Acreditar(Cliente cliente,double Monto)
     +Debitar(Cliente cliente,double Monto)
 
 }
 class Emergencia{
+    +ValidarUso(Cliente)bool
     +Acreditar(Cliente cliente,double Monto)
     +Debitar(Cliente cliente,double Monto)
 }
 class ahorrista{
+    +ValidarUso(Cliente)bool
     +Acreditar(Cliente cliente,double Monto)
     +Debitar(Cliente cliente,double Monto)
 
