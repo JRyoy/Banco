@@ -1,6 +1,6 @@
 namespace BancoTest;
 
-public class UnitTest1
+public class ClienteTest
 {
     [Fact]
     public void Test1()
