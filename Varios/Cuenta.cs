@@ -2,35 +2,24 @@ namespace Varios;
 
 public class Cuenta
 {
-    public int Cbu { get; set; } = 0;
+    public int Cbu { get; set; }
+    private static int _cbu = 0;
     public double SaldoCuenta { get; set; }
-    public Cliente cliente { get; set; }
 
-    public Cuenta(int Cbu,double SaldoCuenta, Cliente cliente)
+    public Cuenta(double SaldoCuenta = 0)
     {
-        this.Cbu = ++Cbu;
-        this.SaldoCuenta=SaldoCuenta;
-        this.cliente = cliente;
+        this.Cbu = ++_cbu;
+        this.SaldoCuenta=SaldoCuenta;        
     }
     internal void Acreditar(double monto)
     {
-
-        cliente.Saldo += monto * 0.8;
-        SaldoCuenta += monto * 0.2;
+        SaldoCuenta+=monto;
     }
     internal void Debitar(double monto)
     {
-        if (validarDebito(monto))
-        {
-            throw new InvalidOperationException("Saldo insuficiente.");
-        }
-        else
-        {
-            SaldoCuenta -= monto * 0.8;
-            cliente.Saldo -= monto * 0.2;
-        }
+        SaldoCuenta-=monto;
     }
-    public bool validarDebito(double monto) => SaldoCuenta - monto < 0;
+    public bool NoAlcanzaDebito(double monto) => SaldoCuenta - monto < 0;
 
 
 }

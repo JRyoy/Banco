@@ -1,10 +1,13 @@
+using Varios;
+
 namespace BancoTest;
 
 public class ClienteTest
 {
     [Fact]
-    public void Test1()
+    public void AltaCliente()
     {
-
+        var cuanta=new Cuenta();
+        var  Hijitus= new Cliente(" Hijitus", "Sacaca",cuanta,0);
     }
 }

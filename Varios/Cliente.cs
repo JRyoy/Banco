@@ -9,7 +9,7 @@ public class Cliente
     public double Saldo { get; set; }
     public Cuenta Cuenta;
     internal IEstado Estado { get; set; } = null!;
-    public Cliente(string Nombre, string Apellido,double Saldo, Cuenta cuenta)
+    public Cliente(string Nombre, string Apellido, Cuenta cuenta,double Saldo)
     {
         this.Nombre = Nombre;
         this.Apellido = Apellido;
